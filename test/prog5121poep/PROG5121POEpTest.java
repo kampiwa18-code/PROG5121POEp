@@ -35,11 +35,7 @@ public class PROG5121POEpTest {
      */
     @Test
     public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        PROG5121POEp.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -47,13 +43,16 @@ public class PROG5121POEpTest {
      */
     @Test
     public void testCheckusername() {
-        System.out.println("checkusername");
-        String username = "";
-        boolean expResult = false;
-        boolean result = PROG5121POEp.checkusername(username);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      // Test 1: Valid username
+        String usernameValid = "kyl_1";
+        boolean resultValid = PROG5121POEp.checkusername(usernameValid);
+        assertTrue(resultValid);
+
+        // Test 2: Invalid username
+        String usernameInvalid = "kyle!!!!!!";
+        boolean resultInvalid = PROG5121POEp.checkusername(usernameInvalid);
+        assertFalse(resultInvalid);
+        
     }
 
     /**
@@ -61,13 +60,17 @@ public class PROG5121POEpTest {
      */
     @Test
     public void testCheckpasswordcomplexity() {
-        System.out.println("checkpasswordcomplexity");
-        String password = "";
-        boolean expResult = false;
-        boolean result = PROG5121POEp.checkpasswordcomplexity(password);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       System.out.println("checkpasswordcomplexity");
+        
+        // Test 1: Valid password complexity
+        String passwordValid = "Ch&&sec@ke99!";
+        boolean resultValid = PROG5121POEp.checkpasswordcomplexity(passwordValid);
+        assertTrue(resultValid);
+
+        // Test 2: Invalid password complexity
+        String passwordInvalid = "password";
+        boolean resultInvalid = PROG5121POEp.checkpasswordcomplexity(passwordInvalid);
+        assertFalse(resultInvalid);
     }
 
     /**
@@ -75,13 +78,17 @@ public class PROG5121POEpTest {
      */
     @Test
     public void testCheckcellphonenumber() {
-        System.out.println("checkcellphonenumber");
-        String cellPhone = "";
-        boolean expResult = false;
-        boolean result = PROG5121POEp.checkcellphonenumber(cellPhone);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      System.out.println("checkcellphonenumber");
+        
+        // Test 1: Valid cell number format
+        String cellPhoneValid = "+27838968976";
+        boolean resultValid = PROG5121POEp.checkcellphonenumber(cellPhoneValid);
+        assertTrue(resultValid);
+
+        // Test 2: Invalid cell number format
+        String cellPhoneInvalid = "08966553";
+        boolean resultInvalid = PROG5121POEp.checkcellphonenumber(cellPhoneInvalid);
+        assertFalse(resultInvalid);
     }
 
     /**
@@ -89,16 +96,14 @@ public class PROG5121POEpTest {
      */
     @Test
     public void testLoginuser() {
-        System.out.println("loginuser");
-        String enteredUser = "";
-        String enteredPass = "";
-        String registeredUser = "";
-        String registeredPass = "";
-        boolean expResult = false;
-        boolean result = PROG5121POEp.loginuser(enteredUser, enteredPass, registeredUser, registeredPass);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+       // Test 1: Successful login
+        boolean resultSuccess = PROG5121POEp.loginuser("kyl_1", "Ch&&sec@ke99!", "kyl_1", "Ch&&sec@ke99!");
+        assertTrue(resultSuccess);
+
+        // Test 2: Failed login
+        boolean resultFailed = PROG5121POEp.loginuser("wrongUser", "wrongPass", "kyl_1", "Ch&&sec@ke99!");
+        assertFalse(resultFailed);
     }
 
     /**
@@ -106,15 +111,16 @@ public class PROG5121POEpTest {
      */
     @Test
     public void testReturnloginstatus() {
-        System.out.println("returnloginstatus");
-        boolean isLoggedIn = false;
-        String firstName = "";
-        String lastName = "";
-        String expResult = "";
+       System.out.println("returnloginstatus");
+        
+        boolean isLoggedIn = true;
+        String firstName = "Kyle";
+        String lastName = "Smith";
+        String expResult = "Welcome Kyle, Smith it is great to see you.";
+        
         String result = PROG5121POEp.returnloginstatus(isLoggedIn, firstName, lastName);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }
