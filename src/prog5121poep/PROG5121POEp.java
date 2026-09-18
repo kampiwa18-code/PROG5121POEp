@@ -14,7 +14,21 @@ public class PROG5121POEp {
         String username;
         String password;
         String cellPhone;
+        
+        System.out.println("*****************");
+        System.out.println("  REGISTRATION   ");
+        System.out.println("*****************");
+        
+        // Asking the user to enter USERNAME 
+        System.out.print("Enter username: ");
+        username = scanner.nextLine();
+
+        // This checks if the user entered the correct formate
+        if (!checkusername(username)) {
+            System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.");
+        } else {
+            System.out.println("Username successfully captured.");
        
     }
     
-}
+    }}
