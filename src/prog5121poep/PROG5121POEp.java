@@ -23,9 +23,9 @@ public class PROG5121POEp {
         System.out.print("Enter your last name: ");
         lastName = scanner.nextLine();
         
-        System.out.println("*****************");
-        System.out.println("  REGISTRATION   ");
-        System.out.println("*****************");
+        System.out.println("*********************");
+        System.out.println("    REGISTRATION     ");
+        System.out.println("*********************");
         
         // Asking the user to enter USERNAME 
         System.out.print("Enter username: ");
@@ -33,7 +33,8 @@ public class PROG5121POEp {
 
         // This checks if the user entered the correct formate
         if (!checkusername(username)) {
-            System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.");
+            System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and"
+                    + " is no more than five characters in length.");
         } 
             else {
                 System.out.println("Username successfully captured.");
@@ -45,7 +46,8 @@ public class PROG5121POEp {
 
             // This checks if user entered the correct password formate
         if (!checkpasswordcomplexity(password)) {
-                System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
+                System.out.println("Password is not correctly formatted; please ensure that the password contains at "
+                        + "least eight characters, a capital letter, a number, and a special character.");
             } 
             else {
                 System.out.println("Password successfully captured.");
@@ -65,9 +67,9 @@ public class PROG5121POEp {
                
                     
             // LOGIN PROCESS
-        System.out.println("*****************");
-        System.out.println("      LOGIN      ");
-        System.out.println("*****************");
+        System.out.println("*********************");
+        System.out.println("        LOGIN        ");
+        System.out.println("*********************");
         
         //User has to enter their login authentication for username and password
              System.out.print("Enter username: ");
@@ -123,7 +125,7 @@ public class PROG5121POEp {
             return false;
         }
         String regex = "^\\+27\\d{9}$";
-        return Pattern.matches(regex, cellPhone) && cellPhone.length() <= 12;}
+        return Pattern.matches(regex, cellPhone) && cellPhone.length() >= 12;}
    
    
    // Checks if credentials taht was entered match registered credentials
@@ -136,7 +138,7 @@ public class PROG5121POEp {
   // Given a welcome message if authenticated, or error message if failed
      public static String returnloginstatus(boolean isLoggedIn, String firstName, String lastName) {
         if (isLoggedIn) {
-            return "Welcome " + firstName + ", " + lastName;
+            return "Welcome " + firstName + ", " + lastName + " it is great to see you.";
         } else {
             return "Username or password incorrect, please try again.";
         }
