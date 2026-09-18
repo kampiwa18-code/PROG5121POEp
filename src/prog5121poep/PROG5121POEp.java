@@ -41,6 +41,19 @@ public class PROG5121POEp {
             } 
             else {
                 System.out.println("Password successfully captured.");
+                
+                
+            // Asks user to enter CELL PHONE Number
+                System.out.print("Enter cell phone number (+27...): ");
+                cellPhone = scanner.nextLine();
+          
+                // Checks if user inputed the correct digits
+        if (!checkcellphonenumber(cellPhone)) {
+                    System.out.println("Cell phone number incorrectly formatted or does not contain international code.");
+                } else {
+                    System.out.println("Cell phone number successfully added.");    
+                    
+ 
        
     }
     
