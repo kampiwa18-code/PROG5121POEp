@@ -26,9 +26,22 @@ public class PROG5121POEp {
         // This checks if the user entered the correct formate
         if (!checkusername(username)) {
             System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.");
-        } else {
-            System.out.println("Username successfully captured.");
+        } 
+            else {
+                System.out.println("Username successfully captured.");
+            
+            
+             // Asking user to enter a PASSWORD
+            System.out.print("Enter password: ");
+            password = scanner.nextLine();
+
+            // This checks if user entered the correct password formate
+        if (!checkpasswordcomplexity(password)) {
+                System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
+            } 
+            else {
+                System.out.println("Password successfully captured.");
        
     }
     
-    }}
+    }
