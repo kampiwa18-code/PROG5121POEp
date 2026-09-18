@@ -62,33 +62,36 @@ public class PROG5121POEp {
                     System.out.println("Cell phone number successfully added.");  
                     
                     
-                    
+               
                     
             // LOGIN PROCESS
         System.out.println("*****************");
-        System.out.println("  REGISTRATION   ");
+        System.out.println("      LOGIN      ");
         System.out.println("*****************");
         
-        
+        //User has to enter their login authentication for username and password
              System.out.print("Enter username: ");
                     String loginUser = scanner.nextLine();       
 
              System.out.print("Enter password: ");
                     String loginPass = scanner.nextLine();
-        
+                    
+                    
+                    //A helper method to check if login credentials are correct
                     boolean isAuthenticated = loginuser(loginUser, loginPass, username, password);
                     System.out.println(returnloginstatus(isAuthenticated, firstName, lastName));
                 }
             }
        
     }
-    }}
+    }
+    
      //Makes sure that there is a underscore and its less than 5 for the username
       public static boolean checkusername(String username) {
         return username != null && username.contains("_") && username.length() <= 5;
     }
       
-      //Checks that password has capital letter, special characters and 8 words
+      //Checks that password has capital letter, special characters and at least 8 characters
   public static boolean checkpasswordcomplexity(String password) {
         if (password == null || password.length() < 8) {
             return false;
@@ -113,9 +116,31 @@ public class PROG5121POEp {
 
         return hasCapital && hasDigit && hasSpecial;
     }
+  
+  //Makes sure that phone number starts with +27 and is followed by exactly 9 numbers
    public static boolean checkcellphonenumber(String cellPhone) {
         if (cellPhone == null) {
             return false;
         }
         String regex = "^\\+27\\d{9}$";
         return Pattern.matches(regex, cellPhone) && cellPhone.length() <= 12;}
+   
+   
+   // Checks if credentials taht was entered match registered credentials
+  public static boolean loginuser(String enteredUser, String enteredPass, String registeredUser, String registeredPass) {
+        return enteredUser != null && enteredPass != null &&
+               enteredUser.equals(registeredUser) &&
+               enteredPass.equals(registeredPass);
+    }
+  
+  // Given a welcome message if authenticated, or error message if failed
+     public static String returnloginstatus(boolean isLoggedIn, String firstName, String lastName) {
+        if (isLoggedIn) {
+            return "Welcome " + firstName + ", " + lastName;
+        } else {
+            return "Username or password incorrect, please try again.";
+        }
+    }
+
+} 
+
