@@ -113,3 +113,9 @@ public class PROG5121POEp {
 
         return hasCapital && hasDigit && hasSpecial;
     }
+   public static boolean checkcellphonenumber(String cellPhone) {
+        if (cellPhone == null) {
+            return false;
+        }
+        String regex = "^\\+27\\d{9}$";
+        return Pattern.matches(regex, cellPhone) && cellPhone.length() <= 12;}
