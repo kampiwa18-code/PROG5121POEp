@@ -1,4 +1,3 @@
-
 package prog5121poep;
 
 import org.junit.After;
@@ -122,5 +121,49 @@ public class PROG5121POEpTest {
         assertEquals(expResult, result);
         
     }
-    
+
+    // ==========================================
+    // PART 2 TESTS (Message Class Validation)
+    // ==========================================
+
+    /**
+     * Test of checkRecipientCell method, of class Message.
+     */
+    @Test
+    public void testCheckRecipientCell() {
+        System.out.println("checkRecipientCell");
+        
+        Message msgValid = new Message(1, "+27831234567", "Hello");
+        assertEquals("Cell phone number successfully captured.", msgValid.checkRecipientCell());
+
+        Message msgInvalid = new Message(1, "0831234567", "Hello");
+        assertEquals("Cell phone number incorrectly formatted or does not contain international code.", msgInvalid.checkRecipientCell());
+    }
+
+    /**
+     * Test of checkMessageLength method, of class Message.
+     */
+    @Test
+    public void testCheckMessageLength() {
+        System.out.println("checkMessageLength");
+        
+        Message msgValid = new Message(1, "+27831234567", "Test message under 250 characters.");
+        assertEquals("Message ready to send.", msgValid.checkMessageLength());
+
+        String longText = "A".repeat(251);
+        Message msgInvalid = new Message(1, "+27831234567", longText);
+        assertEquals("Please check the message size; it exceeds 250 characters.", msgInvalid.checkMessageLength());
+    }
+
+    /**
+     * Test of printMessage method, of class Message.
+     */
+    @Test
+    public void testPrintMessage() {
+        System.out.println("printMessage");
+        
+        Message msg = new Message(1, "+27831234567", "Hello World");
+        String expected = "Message ID: 1\nRecipient: +27831234567\nContent: Hello World";
+        assertEquals(expected, msg.printMessage());
+    }
 }
