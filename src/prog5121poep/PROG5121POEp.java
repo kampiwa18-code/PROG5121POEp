@@ -141,6 +141,15 @@ public class PROG5121POEp {
                                     i--;
                                     continue;
                                 }
+                                
+                                //Give options on what to do with the vaild message
+                                System.out.println("Choose what to do with this message");
+                                System.out.println("1) Send Message");
+                                System.out.println("2) Disregard Message");
+                                System.out.println("3) Store Message to send later");
+                                System.out.print("Your choice: ");
+                                String choice = scanner.nextLine().trim();
+                                
                            }
                       }
                       
