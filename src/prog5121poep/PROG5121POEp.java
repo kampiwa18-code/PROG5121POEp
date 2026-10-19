@@ -150,7 +150,37 @@ public class PROG5121POEp {
                                 System.out.print("Your choice: ");
                                 String choice = scanner.nextLine().trim();
                                 
+                                if (choice.equals("1")){
+                                    sentCount++;
+                                    System.out.println("Message successfully sent.");
+                                    System.out.println(message.printMessage());
+                               
+                                }
+                                else if (choice.equals("2")){
+                                    System.out.println("Press 0 to delete the message: ");
+                                    String confirm = scanner.nextLine().trim();
+                                    if (confirm.equals("0")){ 
+                                        System.out.println("Message disregarded");
+                                    }
+                                
+                                    else {
+                                        System.out.println("Disregard cancelled; message was not sent.");
+                                        i--;
+                                    }
+                                
+                                }
+                                else if (choice.equals("3")) {
+                                    System.out.println("Message successfully stored.");
+                                    System.out.println(message.printMessage());
+                                
+                                }
+                                else{
+                                    System.out.println("Invalid choice. Message not processed.");
+                                    i--;
+                                }
                            }
+                           System.out.println("Total message successfully sent:" + sentCount);
+                           break;
                       }
                       
         
