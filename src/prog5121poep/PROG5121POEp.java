@@ -82,7 +82,11 @@ public class PROG5121POEp {
                     //A helper method to check if login credentials are correct
                     boolean isAuthenticated = loginuser(loginUser, loginPass, username, password);
                     System.out.println(returnloginstatus(isAuthenticated, firstName, lastName));
-                }
+               
+                    
+                   // PART 2 Starts here
+                   
+        }
             }
        
     }
