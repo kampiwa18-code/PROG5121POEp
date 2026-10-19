@@ -185,6 +185,13 @@ public class PROG5121POEp {
                           case "2":
                               System.out.println("Coimng Soon.");
                               break;
+                          
+                          case "3":
+                              System.out.println("Thank you for using QuickChat.");
+                              break;
+                                
+                          default:
+                              System.out.println("Invalid option.");
                       }
                       
                   
