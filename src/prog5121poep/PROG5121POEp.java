@@ -84,8 +84,20 @@ public class PROG5121POEp {
                     System.out.println(returnloginstatus(isAuthenticated, firstName, lastName));
                
                     
+                    
                    // PART 2 Starts here
                    
+                   //The user should only be able to send message if the have logged in successfully and then it will display quickchat message
+                  if (isAuthenticated){
+                      System.out.println("Welcome to QuickChat.");
+                      
+                      //Ask the user  how many messages they would like to enter 
+                      System.out.println("How many messages would you like to enter?");
+                      int messageLimit = readPostiveInterger(scanner);
+                      
+                      
+                      
+                  }
         }
             }
        
