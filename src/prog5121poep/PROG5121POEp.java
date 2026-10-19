@@ -84,21 +84,14 @@ public class PROG5121POEp {
                     System.out.println(returnloginstatus(isAuthenticated, firstName, lastName));
                
                     
-                    
-                   // PART 2 Starts here
+                     // PART 2 Starts here
                    
                    //The user should only be able to send message if the have logged in successfully and then it will display quickchat message
                   if (isAuthenticated){
                       System.out.println("Welcome to QuickChat.");
+  
                       
-                      //Ask the user  how many messages they would like to enter 
-                      System.out.println("How many messages would you like to enter?");
-                      int messageLimit = readPostiveInterger(scanner);
-                      
-                      boolean running = true;
-                      int sentCount = 0;
-                      int processedCount = 0;
-                      
+                  
                       
                       //Displays the numeric menu options for the user to choose from
                       System.out.println("\n QuickChat MENU");
@@ -107,10 +100,29 @@ public class PROG5121POEp {
                       System.out.println("3) Quit");
                       System.out.println("Choose an option from (1-3): ");
                       
+                      String option = scanner.nextLine().trim();
                       
+                      switch (option){
+                          case "1":
+                      //Asked the user to define how many messages they wishto enter
+                           System.out.println("How many messages would you like to enter?");
+                           int numMessage = Integer.parseInt(scanner.nextLine().trim()); 
+                           
+                           int sentCount = 0;
+                           
+                           //Using a for loop to allow entry of the set number of messages
+                           for (int i = 0; i < numMessage; i++){
+                                System.out.println("\n Message" + (i + 1) + " of " + numMessage + "---");
+                                System.out.print("Enter recipient cell number (+27...): ");
+                                String recipient = scanner.nextLine().trim();
+                                
+                              
+                           }
+                      }
                       
+        
                   }
-        }
+            }
             }
        
     }
@@ -172,5 +184,5 @@ public class PROG5121POEp {
         }
     }
 
-} 
+}
 
