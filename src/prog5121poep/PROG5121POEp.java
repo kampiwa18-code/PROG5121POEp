@@ -93,7 +93,7 @@ public class PROG5121POEp {
                       
                   
                       
-                      //Displays the numeric menu options for the user to choose from
+                      //Displays the menu options for the user to choose from
                       System.out.println("\n QuickChat MENU");
                       System.out.println("1) Send Messages");
                       System.out.println("2) Show recently sent message");
@@ -102,9 +102,10 @@ public class PROG5121POEp {
                       
                       String option = scanner.nextLine().trim();
                       
+                      //Handle menu choice using a switch statement
                       switch (option){
                           case "1":
-                      //Asked the user to define how many messages they wishto enter
+                      
                            System.out.println("How many messages would you like to enter?");
                            int numMessage = Integer.parseInt(scanner.nextLine().trim()); 
                            
@@ -116,7 +117,30 @@ public class PROG5121POEp {
                                 System.out.print("Enter recipient cell number (+27...): ");
                                 String recipient = scanner.nextLine().trim();
                                 
-                              
+                                //Validate recipient using the message class
+                                Message draft = new Message(i + 1, recipient, "placeholder");
+                                String recipientStatus = draft.checkRecipientCell();
+                                System.out.println(recipientStatus);
+                                
+                                // if its valid, lets them try this message slot again
+                                if (!recipientStatus.startsWith("Cell phone number successfully")){
+                                    i--;
+                                    continue;
+                                }
+                                
+                                System.out.println("Enter your message (max 250 characters): ");
+                                String msgContent = scanner.nextLine();
+                                
+                                
+                                Message message = new Message(i + 1, recipient, msgContent);
+                                String lengthStatus = message.checkMessageLength();
+                                System.out.println(lengthStatus);
+                                
+                                //If message exceeds character limit, tells user to retry
+                                if (!lengthStatus.equals("Message ready to send.")){
+                                    i--;
+                                    continue;
+                                }
                            }
                       }
                       
