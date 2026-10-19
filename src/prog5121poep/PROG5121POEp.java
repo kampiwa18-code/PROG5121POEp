@@ -181,8 +181,13 @@ public class PROG5121POEp {
                            }
                            System.out.println("Total message successfully sent:" + sentCount);
                            break;
+                           
+                          case "2":
+                              System.out.println("Coimng Soon.");
+                              break;
                       }
                       
+                  
         
                   }
             }
