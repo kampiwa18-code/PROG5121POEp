@@ -95,6 +95,18 @@ public class PROG5121POEp {
                       System.out.println("How many messages would you like to enter?");
                       int messageLimit = readPostiveInterger(scanner);
                       
+                      boolean running = true;
+                      int sentCount = 0;
+                      int processedCount = 0;
+                      
+                      
+                      //Displays the numeric menu options for the user to choose from
+                      System.out.println("\n QuickChat MENU");
+                      System.out.println("1) Send Messages");
+                      System.out.println("2) Show recently sent message");
+                      System.out.println("3) Quit");
+                      System.out.println("Choose an option from (1-3): ");
+                      
                       
                       
                   }
