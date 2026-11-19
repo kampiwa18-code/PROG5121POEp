@@ -23,6 +23,18 @@ public class PROG5121POEpTest {
     
     @Before
     public void setUp() {
+        //  PART 3 ADDED: Reset lists before each test
+        PROG5121POEp.sentMessagesList.clear();
+        PROG5121POEp.disregardedMessagesList.clear();
+        PROG5121POEp.storedMessagesList.clear();
+        PROG5121POEp.messageHashesList.clear();
+        PROG5121POEp.messageIDsList.clear();
+        PROG5121POEp.sentSendersList.clear();
+        PROG5121POEp.sentRecipientsList.clear();
+        PROG5121POEp.storedSendersList.clear();
+        PROG5121POEp.storedRecipientsList.clear();
+        PROG5121POEp.storedIDsList.clear();
+        PROG5121POEp.storedHashesList.clear();
     }
     
     @After
