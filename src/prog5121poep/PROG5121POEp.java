@@ -5,14 +5,14 @@ import java.util.regex.Pattern;
 
 
 public class PROG5121POEp {
-    //Part 3 Starts
+    //Part 3 
       // i used Arraylist here so the grow automatically as messages are added
     
     static ArrayList<String> sentMessagesList = new Arraylist<>();
-    static ArrayList<String> disregardedMessageList = new ArrayList<>();
-    static ArrayList<String> storedMessageList = new ArrayList<>();
+    static ArrayList<String> disregardedMessagesList = new ArrayList<>();
+    static ArrayList<String> storedMessagesList = new ArrayList<>();
     static ArrayList<String> messageHashesList = new ArrayList<>();
-    static ArrayList<String> messageIDsMessageList = new ArrayList<>();
+    static ArrayList<String> messageIDsList = new ArrayList<>();
    
     
     
@@ -20,7 +20,7 @@ public class PROG5121POEp {
        
        static ArrayList<String> sentSendersList = new ArrayList<>();
        static ArrayList<String> sentRecipientsList = new ArrayList<>();
-       static ArrayList<String> storedtSendersList = new ArrayList<>();
+       static ArrayList<String> storedSendersList = new ArrayList<>();
        static ArrayList<String> storedRecipientsList = new ArrayList<>();
        static ArrayList<String> storedIDsList = new ArrayList<>();
        static ArrayList<String> storedHashesList = new ArrayList<>();
@@ -228,6 +228,38 @@ public class PROG5121POEp {
        
     }
     }
+    
+                   //PART 3 
+    
+    // Adds a sent message to the sent list, IDs and hashes
+     
+    public static void recordSentMessage(String sender, String recipient, String content, String msgId, String msgHash) {
+        sentMessagesList.add(content);
+        sentSendersList.add(sender);
+        sentRecipientsList.add(recipient);
+        messageIDsList.add(msgId);
+        messageHashesList.add(msgHash);
+    }
+    
+    // Adds a disregarded message to the disregarded list, IDs, and hashes
+    public static void recordDisregardedMessage(String content, String msgId, String msgHash) {
+        disregardedMessagesList.add(content);
+        messageIDsList.add(msgId);
+        messageHashesList.add(msgHash);
+    }
+    
+    // Adds a stored message to the stored list along with its details
+    public static void recordStoredMessage(String sender, String recipient, String content, String msgId, String msgHash) {
+        storedMessagesList.add(content);
+        storedSendersList.add(sender);
+        storedRecipientsList.add(recipient);
+        storedIDsList.add(msgId);
+        storedHashesList.add(msgHash);
+        messageIDsList.add(msgId);
+        messageHashesList.add(msgHash);
+    }
+    
+    
     
      //Makes sure that there is a underscore and its less than 5 for the username
       public static boolean checkusername(String username) {
