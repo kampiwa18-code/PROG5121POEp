@@ -392,6 +392,24 @@ public class PROG5121POEp {
         return matches;
     }
     
+    
+    // (e) Deletes a stored message using its message hash
+   public static String deleteMessageByHash(String messageHash) {
+        for (int i = 0; i < storedHashesList.size(); i++) {
+            if (storedHashesList.get(i).equalsIgnoreCase(messageHash)) {
+                String deletedMsg = storedMessagesList.remove(i);
+                storedSendersList.remove(i);
+                storedRecipientsList.remove(i);
+                storedIDsList.remove(i);
+                storedHashesList.remove(i);
+                messageHashesList.remove(messageHash);
+
+                saveStoredMessagesToJson(STORED_JSON_FILE);
+                return "Message: \"" + deletedMsg + "\" successfully deleted.";
+            }
+        }
+        return "Message with hash \"" + messageHash + "\" not found.";
+    }
     // Part 1 below
     
      //Makes sure that there is a underscore and its less than 5 for the username
