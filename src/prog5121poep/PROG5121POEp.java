@@ -259,7 +259,46 @@ public class PROG5121POEp {
         messageHashesList.add(msgHash);
     }
     
-    
+    // Converts list into normal arrays
+    public static String[] getSentMessagesArray() {
+        String[] arr = new String[sentMessagesList.size()];
+        for (int i = 0; i < sentMessagesList.size(); i++) {
+            arr[i] = sentMessagesList.get(i);
+        }
+        return arr;
+    }
+
+    public static String[] getDisregardedMessagesArray() {
+        String[] arr = new String[disregardedMessagesList.size()];
+        for (int i = 0; i < disregardedMessagesList.size(); i++) {
+            arr[i] = disregardedMessagesList.get(i);
+        }
+        return arr;
+    }
+
+    public static String[] getStoredMessagesArray() {
+        String[] arr = new String[storedMessagesList.size()];
+        for (int i = 0; i < storedMessagesList.size(); i++) {
+            arr[i] = storedMessagesList.get(i);
+        }
+        return arr;
+    }
+
+    public static String[] getMessageHashesArray() {
+        String[] arr = new String[messageHashesList.size()];
+        for (int i = 0; i < messageHashesList.size(); i++) {
+            arr[i] = messageHashesList.get(i);
+        }
+        return arr;
+    }
+
+    public static String[] getMessageIDsArray() {
+        String[] arr = new String[messageIDsList.size()];
+        for (int i = 0; i < messageIDsList.size(); i++) {
+            arr[i] = messageIDsList.get(i);
+        }
+        return arr;
+    }
     
      //Makes sure that there is a underscore and its less than 5 for the username
       public static boolean checkusername(String username) {
