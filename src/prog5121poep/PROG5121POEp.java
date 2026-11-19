@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 
 public class PROG5121POEp {
-    //Part 3 
+    //Part 3
       // i used Arraylist here so the grow automatically as messages are added
     
     static ArrayList<String> sentMessagesList = new Arraylist<>();
@@ -120,9 +120,13 @@ public class PROG5121POEp {
                   if (isAuthenticated){
                       System.out.println("Welcome to QuickChat.");
   
-                      
+                     // Save the logged-in user's name as the sender
+                        String senderName = firstName + " " + lastName;
+                        boolean keepRunning = true;
+                        
+                        
                   
-                      
+                      while (keepRunning){
                       //Displays the menu options for the user to choose from
                       System.out.println("\n QuickChat MENU");
                       System.out.println("1) Send Messages");
@@ -180,8 +184,17 @@ public class PROG5121POEp {
                                 System.out.print("Your choice: ");
                                 String choice = scanner.nextLine().trim();
                                 
+                                
+                                // Get message ID and hash from the message class
+                                String msgId = message.getMessageID();
+                                String msgHash = message.createMessageHash();
+                                
+                                
                                 if (choice.equals("1")){
                                     sentCount++;
+                                    
+                                    // Save into sent messages list
+                                    recordSentMessage(senderName, recipient, msgContent, msgId,msgHash);
                                     System.out.println("Message successfully sent.");
                                     System.out.println(message.printMessage());
                                
@@ -190,6 +203,9 @@ public class PROG5121POEp {
                                     System.out.println("Press 0 to delete the message: ");
                                     String confirm = scanner.nextLine().trim();
                                     if (confirm.equals("0")){ 
+                                        
+                                        // Save into disregareded messages list
+                                        recordDisregardedMessage(msgContent, msgId, msgHash);
                                         System.out.println("Message disregarded");
                                     }
                                 
@@ -200,6 +216,10 @@ public class PROG5121POEp {
                                 
                                 }
                                 else if (choice.equals("3")) {
+                                    // Save into stored messages list and write to JSON file
+                                    recordStoredMessage(senderName, recipient, msgContent, msgId, msgHash);
+                                    saveStoredMessagesToJson(STORED_JSON_FILE);
+                                    
                                     System.out.println("Message successfully stored.");
                                     System.out.println(message.printMessage());
                                 
@@ -213,11 +233,17 @@ public class PROG5121POEp {
                            break;
                            
                           case "2":
-                              System.out.println("Coming Soon.");
-                              break;
+                              // Show the last sent message if one exists, otherwise keep the Part 2 message
+                                    if (sentMessagesList.isEmpty()) {
+                                        System.out.println("Coming Soon.");
+                                    } else {
+                                        System.out.println("Last sent message: " + sentMessagesList.get(sentMessagesList.size() - 1));
+                                    }
+                                    break;
                           
                           case "3":
                               System.out.println("Thank you for using QuickChat.");
+                              keepRunning = false;
                               break;
                               
                               // Part 3 fourth menu option
@@ -238,7 +264,7 @@ public class PROG5121POEp {
        
     }
     }
-    
+    }    
                    //PART 3
     
     // Adds a sent message to the sent list, IDs and hashes
@@ -460,6 +486,58 @@ public class PROG5121POEp {
             writer.close();
         } catch (IOException e) {
             System.out.println("Error saving JSON file: " + e.getMessage());
+        }
+    }
+    
+    // Reads stored messages from the JSON file back into the stored lists
+    public static void loadStoredMessagesFromJson(String fileName) {
+        File file = new File(fileName);
+        if (!file.exists()) {
+            return;
+        }
+
+        storedMessagesList.clear();
+        storedSendersList.clear();
+        storedRecipientsList.clear();
+        storedIDsList.clear();
+        storedHashesList.clear();
+
+        try {
+            Scanner fileScanner = new Scanner(file);
+            String id = "";
+            String hash = "";
+            String sender = "";
+            String recipient = "";
+            String msg = "";
+
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine().trim();
+                if (line.startsWith("\"messageID\":")) {
+                    id = getJsonValue(line);
+                } else if (line.startsWith("\"messageHash\":")) {
+                    hash = getJsonValue(line);
+                } else if (line.startsWith("\"sender\":")) {
+                    sender = getJsonValue(line);
+                } else if (line.startsWith("\"recipient\":")) {
+                    recipient = getJsonValue(line);
+                } else if (line.startsWith("\"message\":")) {
+                    msg = getJsonValue(line);
+                } else if (line.startsWith("}")) {
+                    storedIDsList.add(id);
+                    storedHashesList.add(hash);
+                    storedSendersList.add(sender);
+                    storedRecipientsList.add(recipient);
+                    storedMessagesList.add(msg);
+                    id = "";
+                    hash = "";
+                    sender = "";
+                    recipient = "";
+                    msg = "";
+                }
+            }
+            fileScanner.close();
+        } catch (Exception e) {
+            System.out.println("Error loading JSON file: " + e.getMessage());
         }
     }
    
