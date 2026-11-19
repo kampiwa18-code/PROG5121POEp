@@ -13,6 +13,17 @@ public class PROG5121POEp {
     static ArrayList<String> storedMessageList = new ArrayList<>();
     static ArrayList<String> messageHashesList = new ArrayList<>();
     static ArrayList<String> messageIDsMessageList = new ArrayList<>();
+    
+    
+    // Etra lists so i can keep track of senders, recipients, IDs and hashes together
+       
+       static ArrayList<String> sentSendersList = new ArrayList<>();
+       static ArrayList<String> sentRecipientsList = new ArrayList<>();
+       static ArrayList<String> storedtSendersList = new ArrayList<>();
+       static ArrayList<String> storedRecipientsList = new ArrayList<>();
+       static ArrayList<String> storedIDsList = new ArrayList<>();
+       static ArrayList<String> storedHashesList = new ArrayList<>();
+       
  
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
