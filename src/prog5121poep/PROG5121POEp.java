@@ -1,5 +1,9 @@
 package prog5121poep;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -428,6 +432,34 @@ public class PROG5121POEp {
         }
         return report.trim();
    }
+   // Saves stored messages into a JSON file so we can read them back into the list
+    public static void saveStoredMessagesToJson(String fileName) {
+        try {
+            FileWriter writer = new FileWriter(fileName);
+            writer.write("[\n");
+            for (int i = 0; i < storedMessagesList.size(); i++) {
+                writer.write("  {\n");
+                writer.write("    \"messageID\": \"" + storedIDsList.get(i) + "\",\n");
+                writer.write("    \"messageHash\": \"" + storedHashesList.get(i) + "\",\n");
+                writer.write("    \"sender\": \"" + storedSendersList.get(i) + "\",\n");
+                writer.write("    \"recipient\": \"" + storedRecipientsList.get(i) + "\",\n");
+                writer.write("    \"message\": \"" + storedMessagesList.get(i) + "\"\n");
+                if (i < storedMessagesList.size() - 1) {
+                    writer.write("  },\n");
+                } else {
+                    writer.write("  }\n");
+                }
+            }
+            writer.write("]\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving JSON file: " + e.getMessage());
+        }
+    }
+   
+   
+   
+   
     // Part 1 below
     
      //Makes sure that there is a underscore and its less than 5 for the username
