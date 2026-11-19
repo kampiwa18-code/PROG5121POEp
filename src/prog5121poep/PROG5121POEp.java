@@ -410,6 +410,24 @@ public class PROG5121POEp {
         }
         return "Message with hash \"" + messageHash + "\" not found.";
     }
+   
+   // (f) Prints a report with details of all stored messages
+   public static String displayStoredMessagesReprt(){
+       if (storedMessagesList.isEmpty()){
+           return "No stored messages available for report.";
+       }
+       String report = "\n STORED MESSAGES REPORT \n";
+        for (int i = 0; i< storedMessagesList.size(); i++){
+            report = report + "Message " + (i + 1) + "\n";
+            report = report + "Message ID: " + storedIDsList.get(i) + "\n";
+            report = report + "Message Hash: " + storedHashesList.get(i) + "\n";
+            report = report + "Sender: " + storedSendersList.get(i) + "\n";
+            report = report + "Recipient: " + storedRecipientsList.get(i) + "\n";
+            report = report + "Message: " + storedMessagesList.get(i) + "\n";
+            report = report + "-------------------------\n";
+        }
+        return report.trim();
+   }
     // Part 1 below
     
      //Makes sure that there is a underscore and its less than 5 for the username
