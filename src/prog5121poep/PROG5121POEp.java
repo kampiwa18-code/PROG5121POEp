@@ -334,7 +334,20 @@ public class PROG5121POEp {
             System.out.println("Invalid choice.");
         }
        
-     
+    }
+    
+    // (a) Displays the sender and the recipient of every stored message 
+    public static String displayStoredSendersAndRecipients(){
+      if (storedMessagesList.isEmpty()){
+          return "No stored message found";
+      }
+      String output = "stored Messages (Sender & Recipient): \n";
+      for (int i = 0; i < storedMessagesList.size(); i++){
+           output = output + (i + 1) + ".Sender: " + storedSendersList.get(i) + "| Recipient:" + storedRecipientsList.get(i) + "\n";
+                   }
+            return output.trim();
+      
+    }
     
      //Makes sure that there is a underscore and its less than 5 for the username
       public static boolean checkusername(String username) {
