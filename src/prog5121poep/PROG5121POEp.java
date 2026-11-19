@@ -300,6 +300,42 @@ public class PROG5121POEp {
         return arr;
     }
     
+    // shows the stored Messages menu from option a to f 
+    public static void handlestoreMessagesMenu(Scanner scanner){
+       System.out.println("\n STORED MESSAGES MENU");
+       System.out.println("a) Display sender and the recipient of all stored messages");
+       System.out.println("b) Display the longest stored message");
+       System.out.println("c) Search for a message ID and display recipient and message");
+       System.out.println("d) Search for all the messages stored for a particular recipient");
+       System.out.println("e) Delete a message using the message hash");
+       System.out.println("f) Display a report listing full details of all stored messages");
+       System.out.println("Enter a choice (a-f): ");
+       
+       String choice = scanner.nextLine().trim().toLowerCase();
+       if (choice.equals("a")) {
+            System.out.println(displayStoredSendersAndRecipients());
+        } else if (choice.equals("b")) {
+            System.out.println(getLongestStoredMessage());
+        } else if (choice.equals("c")) {
+            System.out.print("Enter Message ID: ");
+            String id = scanner.nextLine().trim();
+            System.out.println(searchByMessageId(id));
+        } else if (choice.equals("d")) {
+            System.out.print("Enter recipient number (+27...): ");
+            String rec = scanner.nextLine().trim();
+            System.out.println(searchMessagesByRecipient(rec));
+        } else if (choice.equals("e")) {
+            System.out.print("Enter Message Hash to delete: ");
+            String hash = scanner.nextLine().trim();
+            System.out.println(deleteMessageByHash(hash));
+        } else if (choice.equals("f")) {
+            System.out.println(displayStoredMessagesReport());
+        } else {
+            System.out.println("Invalid choice.");
+        }
+       
+     
+    
      //Makes sure that there is a underscore and its less than 5 for the username
       public static boolean checkusername(String username) {
         return username != null && username.contains("_") && username.length() <= 5;
