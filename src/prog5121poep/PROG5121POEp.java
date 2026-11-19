@@ -365,6 +365,18 @@ public class PROG5121POEp {
       return longest;
     }
     
+    // (c) Searches stored messages by message ID and shows recipient and message
+    public static String searchBymessageId(String messageId){
+        for (int i = 0; i < storedIDsList.size(); i++) {
+          if (storedIDsList.get(i).equalsIgnoreCase(messageId)){
+          return "Recipient: " + storedRecipientsList.get(i) + "\nMessage: " + storedMessagesList.get(i);
+        }
+       }
+       return "Message ID not found. "; 
+    }
+    
+    // Part 1 below
+    
      //Makes sure that there is a underscore and its less than 5 for the username
       public static boolean checkusername(String username) {
         return username != null && username.contains("_") && username.length() <= 5;
