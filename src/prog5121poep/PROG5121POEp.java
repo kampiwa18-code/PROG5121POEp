@@ -5,7 +5,14 @@ import java.util.regex.Pattern;
 
 
 public class PROG5121POEp {
-
+    //Part 3 Starts
+      // i used Arraylist here so the grow automatically as messages are added
+    
+    static ArrayList<String> sentMessagesList = new Arraylist<>();
+    static ArrayList<String> disregardedMessageList = new ArrayList<>();
+    static ArrayList<String> storedMessageList = new ArrayList<>();
+    static ArrayList<String> messageHashesList = new ArrayList<>();
+    static ArrayList<String> messageIDsMessageList = new ArrayList<>();
  
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -113,7 +120,7 @@ public class PROG5121POEp {
                            
                            //Using a for loop to allow entry of the set number of messages
                            for (int i = 0; i < numMessage; i++){
-                                System.out.println("\n Message" + (i + 1) + " of " + numMessage + "---");
+                                System.out.println("\n--- Message" + (i + 1) + " of " + numMessage + "---");
                                 System.out.print("Enter recipient cell number (+27...): ");
                                 String recipient = scanner.nextLine().trim();
                                 
@@ -183,7 +190,7 @@ public class PROG5121POEp {
                            break;
                            
                           case "2":
-                              System.out.println("Coimng Soon.");
+                              System.out.println("Coming Soon.");
                               break;
                           
                           case "3":
@@ -260,4 +267,3 @@ public class PROG5121POEp {
     }
 
 }
-
