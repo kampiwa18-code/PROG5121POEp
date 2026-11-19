@@ -349,6 +349,22 @@ public class PROG5121POEp {
       
     }
     
+    
+    // (b) finds and returns the longest stored message
+    public static String getLongestStoredMessage(){
+      if (storedMessagesList.isEmpty()) {
+          return "No stored message found. ";
+      }
+      
+      String longest = storedMessagesList.get(0);
+      for (int i = 1; i < storedMessagesList.size();  i++){
+            if (storedMessagesList.get(i).length() > longest.length()){
+                longest = storedMessagesList.get(i);
+            }
+      }
+      return longest;
+    }
+    
      //Makes sure that there is a underscore and its less than 5 for the username
       public static boolean checkusername(String username) {
         return username != null && username.contains("_") && username.length() <= 5;
