@@ -219,6 +219,12 @@ public class PROG5121POEp {
                           case "3":
                               System.out.println("Thank you for using QuickChat.");
                               break;
+                              
+                              // Part 3 fourth menu option
+                          case "4":
+                              loadStoredMessagesFromJson(STORED_JSON_FILE);
+                              handleStoredMessagesMenu(scanner);
+                              break;
                                 
                           default:
                               System.out.println("Invalid option.");
@@ -233,7 +239,7 @@ public class PROG5121POEp {
     }
     }
     
-                   //PART 3 
+                   //PART 3
     
     // Adds a sent message to the sent list, IDs and hashes
      
