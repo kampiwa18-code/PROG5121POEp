@@ -12,7 +12,7 @@ public class PROG5121POEp {
     //Part 3
       // i used Arraylist here so the grow automatically as messages are added
     
-    static ArrayList<String> sentMessagesList = new Arraylist<>();
+    static ArrayList<String> sentMessagesList = new ArrayList<>();
     static ArrayList<String> disregardedMessagesList = new ArrayList<>();
     static ArrayList<String> storedMessagesList = new ArrayList<>();
     static ArrayList<String> messageHashesList = new ArrayList<>();
@@ -132,7 +132,8 @@ public class PROG5121POEp {
                       System.out.println("1) Send Messages");
                       System.out.println("2) Show recently sent message");
                       System.out.println("3) Quit");
-                      System.out.println("Choose an option from (1-3): ");
+                      System.out.println("4) Stored Messages");
+                      System.out.println("Choose an option from (1-4): ");
                       
                       String option = scanner.nextLine().trim();
                       
@@ -249,7 +250,7 @@ public class PROG5121POEp {
                               // Part 3 fourth menu option
                           case "4":
                               loadStoredMessagesFromJson(STORED_JSON_FILE);
-                              handleStoredMessagesMenu(scanner);
+                              handlestoreMessagesMenu(scanner);
                               break;
                                 
                           default:
@@ -355,7 +356,7 @@ public class PROG5121POEp {
         } else if (choice.equals("c")) {
             System.out.print("Enter Message ID: ");
             String id = scanner.nextLine().trim();
-            System.out.println(searchByMessageId(id));
+            System.out.println(searchBymessageId(id));
         } else if (choice.equals("d")) {
             System.out.print("Enter recipient number (+27...): ");
             String rec = scanner.nextLine().trim();
@@ -448,7 +449,7 @@ public class PROG5121POEp {
     }
    
    // (f) Prints a report with details of all stored messages
-   public static String displayStoredMessagesReprt(){
+   public static String displayStoredMessagesReport(){
        if (storedMessagesList.isEmpty()){
            return "No stored messages available for report.";
        }
@@ -541,7 +542,18 @@ public class PROG5121POEp {
         }
     }
    
-   
+   // Small helper to grab the text inside quotes on a JSON line
+    private static String getJsonValue(String line) {
+        int colon = line.indexOf(":");
+        String val = line.substring(colon + 1).trim();
+        if (val.endsWith(",")) {
+            val = val.substring(0, val.length() - 1).trim();
+        }
+        if (val.startsWith("\"") && val.endsWith("\"") && val.length() >= 2) {
+            val = val.substring(1, val.length() - 1);
+        }
+        return val;
+    }
    
    
     // Part 1 below
@@ -602,4 +614,55 @@ public class PROG5121POEp {
         }
     }
 
+
+    static class Message {
+        private int messageNumber;
+        private String recipient;
+        private String messageContent;
+        private String messageID;
+        private String messageHash;
+
+        public Message(int messageNumber, String recipient, String messageContent) {
+            this.messageNumber = messageNumber;
+            this.recipient = recipient;
+            this.messageContent = messageContent;
+            // Creates a simple 10-digit ID string
+            this.messageID = String.format("%010d", (int) (Math.random() * 1000000000));
+            this.messageHash = createMessageHash();
+        }
+
+        public String checkRecipientCell() {
+            if (recipient != null && recipient.startsWith("+27") && recipient.length() == 12) {
+                return "Cell phone number successfully captured.";
+            }
+            return "Cell phone number is incorrectly formatted or does not contain international code.";
+        }
+
+        public String checkMessageLength() {
+            if (messageContent != null && messageContent.length() <= 250) {
+                return "Message ready to send.";
+            }
+            return "Message exceeds 250 characters by " + (messageContent.length() - 250) + ", please reduce size.";
+        }
+
+        public String getMessageID() {
+            return messageID;
+        }
+
+        public String createMessageHash() {
+            String firstTwoId = messageID.length() >= 2 ? messageID.substring(0, 2) : "00";
+            String cleanText = messageContent == null ? "" : messageContent.trim();
+            String[] words = cleanText.split("\\s+");
+            String firstWord = words.length > 0 && !words[0].isEmpty() ? words[0] : "MSG";
+            String lastWord = words.length > 0 && !words[words.length - 1].isEmpty() ? words[words.length - 1] : "END";
+            return (firstTwoId + ":" + messageNumber + ":" + firstWord + lastWord).toUpperCase();
+        }
+
+        public String printMessage() {
+            return "Message ID: " + messageID +
+                   "\nMessage Hash: " + messageHash +
+                   "\nRecipient: " + recipient +
+                   "\nMessage: " + messageContent;
+        }
+    }
 }
