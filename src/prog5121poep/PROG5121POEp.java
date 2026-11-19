@@ -13,6 +13,7 @@ public class PROG5121POEp {
     static ArrayList<String> storedMessageList = new ArrayList<>();
     static ArrayList<String> messageHashesList = new ArrayList<>();
     static ArrayList<String> messageIDsMessageList = new ArrayList<>();
+   
     
     
     // Etra lists so i can keep track of senders, recipients, IDs and hashes together
@@ -24,9 +25,16 @@ public class PROG5121POEp {
        static ArrayList<String> storedIDsList = new ArrayList<>();
        static ArrayList<String> storedHashesList = new ArrayList<>();
        
+    // file name for storing message in JSON format
+       
+       static String STORED_JSON_FILE = "stored_messages.json";
+       
  
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        
+        // Load any saved JSON messages into the stored list when the program starts
+        loadStoredMessagesFromJson(STORED_JSON_FILE);
         
         String firstName;
         String lastName;
