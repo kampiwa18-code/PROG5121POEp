@@ -375,6 +375,23 @@ public class PROG5121POEp {
        return "Message ID not found. "; 
     }
     
+    //(d) Searches all stored messages for a particular recipient 
+    public static String searchMessagesByRecipient(String recipient) {
+        String matches = "";
+        for (int i = 0; i < storedMessagesList.size(); i++) {
+            if (storedRecipientsList.get(i).equalsIgnoreCase(recipient)) {
+                if (!matches.equals("")) {
+                    matches = matches + "\n";
+                }
+                matches = matches + storedMessagesList.get(i);
+            }
+        }
+        if (matches.equals("")) {
+            return "No stored messages found for recipient: " + recipient;
+        }
+        return matches;
+    }
+    
     // Part 1 below
     
      //Makes sure that there is a underscore and its less than 5 for the username
